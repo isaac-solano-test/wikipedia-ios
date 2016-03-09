@@ -1,0 +1,28 @@
+resource_pools: # Connect to osx worker
+  - isaac_osx_hosts
+
+environment:
+  'FASTLANE_HIDE_CHANGELOG': '1'
+  'FASTLANE_SKIP_UPDATE_CHECK': '1"
+  'IOS_VER': '9.2'
+  'FL_ARGS': 'verify'
+
+hooks: # Setup hooks: http://docs.solanolabs.com/Setup/setup-hooks/
+  pre_setup: ./scripts/prepare_workers.sh
+  worker_setup: ./scripts/osx_command.sh install_deps make travis-get-deps
+
+tests:
+  - ./scripts/osx_test.sh ./scripts/fastlane.sh
+
+test_pattern:
+  - "none"
+
+# Skip automated bundle install on linux worker
+skip_package:
+  - ruby 
+
+ruby:
+  ruby_version: 2.0.0 # Version of ruby you use locally if using ruby gems
+
+timeout_hook: 900 # Should be long enough for each setup hook
+
