@@ -38,6 +38,9 @@ chmod +x .solano-osx-env-set.sh
 grep -v ^"localhost" $HOME/.ssh/known_hosts | grep -v ^"127.0.0.1" > .solano-known_hosts
 scp -P $OSX_SSH_PORT .solano-known_hosts $OSX_USER@$OSX_IP_ADDR:$OSX_REMOTE_HOME/.ssh/known_hosts
 
+# Delete unnecessary files
+rm -f $TDDIUM_REPO_ROOT/.ruby-version
+
 # Sync files from linux worker to OSX worker (--delete to ensure a clean workspace)
 rsync -az --delete -e "ssh -p $OSX_SSH_PORT" ./ $OSX_USER@$OSX_IP_ADDR:$OSX_REMOTE_DIR
 
