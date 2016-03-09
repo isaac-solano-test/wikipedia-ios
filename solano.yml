@@ -3,7 +3,7 @@ resource_pools: # Connect to osx worker
 
 environment:
   'FASTLANE_HIDE_CHANGELOG': '1'
-  'FASTLANE_SKIP_UPDATE_CHECK': '1"
+  'FASTLANE_SKIP_UPDATE_CHECK': '1'
   'IOS_VER': '9.2'
   'FL_ARGS': 'verify'
 
