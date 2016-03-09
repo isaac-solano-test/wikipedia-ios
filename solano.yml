@@ -6,6 +6,7 @@ environment:
   'FASTLANE_SKIP_UPDATE_CHECK': '1'
   'IOS_VER': '9.2'
   'FL_ARGS': 'verify'
+  'FL_NO_ENSURE_CLEAN': '1'
 
 hooks: # Setup hooks: http://docs.solanolabs.com/Setup/setup-hooks/
   pre_setup: ./scripts/prepare_workers.sh
